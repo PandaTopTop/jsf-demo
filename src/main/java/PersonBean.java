@@ -29,4 +29,5 @@ public class PersonBean implements Serializable {
     public String getPhone() {
         return person.getPhone();
     }
+
 }

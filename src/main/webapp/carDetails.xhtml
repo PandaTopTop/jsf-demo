@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Step 2: Vehicle Details</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+<h:body>
+    <div class="container">
+    <h2>Step 2: Your Vehicle Information</h2>
+    <h:form>
+        <h:panelGrid columns="2" styleClass="form-grid">
+            <h:outputLabel for="make" value="Make:" />
+            <h:inputText id="make" value="#{vehicleBean.car.make}" required="true" />
+
+            <h:outputLabel for="model" value="Model:" />
+            <h:inputText id="model" value="#{vehicleBean.car.model}" required="true" />
+
+            <h:outputLabel for="year" value="Year:" />
+            <h:inputText id="year" value="#{vehicleBean.car.year}" required="true" />
+            <div class="checkbox-container">
+            <h:outputLabel for="safety" value="Vehicle Safety Features:" />
+
+            <h:selectManyCheckbox id="safety"
+                                  value="#{vehicleBean.car.safetyFeatures}"
+                                  layout="pageDirection"
+                                  styleClass="checkbox-group">
+                <f:selectItem itemValue="abs" itemLabel="Anti-lock Brakes (ABS)" />
+                <f:selectItem itemValue="airbags" itemLabel="Multiple Airbags" />
+                <f:selectItem itemValue="anti-theft" itemLabel="Anti-theft System" />
+                <f:selectItem itemValue="daytime-lights" itemLabel="Daytime Running Lights" />
+            </h:selectManyCheckbox>
+            </div>
+
+        </h:panelGrid>
+        <br/>
+        <h:commandButton value="Next: Select Coverages" action="#{vehicleBean.submitCarDetails}" styleClass="btn-primary"/>
+    </h:form>
+    </div>
+</h:body>
+</html>

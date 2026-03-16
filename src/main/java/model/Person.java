@@ -6,7 +6,10 @@ public class Person {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private String  phone;
+    private String phone;
+
+    public Person() {
+    }
 
     public Person(String firstName, String lastName, LocalDate dateOfBirth, String phone) {
         this.firstName = firstName;
@@ -15,6 +18,10 @@ public class Person {
         this.phone = phone;
     }
 
+
+    public String getFullName(){
+        return firstName +" " + lastName;
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -46,4 +53,5 @@ public class Person {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Quote Summary</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+<h:body>
+    <div class="container">
+    <h2>Your Quote Summary</h2>
+    <h:outputText value="Customer: " />
+    <h:outputText value="#{customerBean.person.fullName}"/>
+    <br/>
+    <h:outputText value="Vehicle: " />
+    <h:outputText value="#{vehicleBean.car.year} #{vehicleBean.car.make} #{vehicleBean.car.model}" />
+    <h:form>
+        <h:commandLink value="Edit" action="carDetails?faces-redirect=true"/>
+    </h:form>
+    <h3>Included Coverages</h3>
+    <h:dataTable value="#{quoteBuilderBean.selectedCoverages}" var="item" styleClass="coverage-table">
+        <h:column><f:facet name="header">Coverage</f:facet>#{item.coverageName}</h:column>
+        <h:column><f:facet name="header">Limit</f:facet><h:outputText value="#{item.limit}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText></h:column>
+        <h:column><f:facet name="header">Premium</f:facet><h:outputText value="#{item.premium}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText></h:column>
+    </h:dataTable>
+
+    <div class="total-premium">
+        Final Quote: <h:outputText value="#{quoteBuilderBean.totalPremium}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText>
+    </div>
+    </div>
+</h:body>
+</html>

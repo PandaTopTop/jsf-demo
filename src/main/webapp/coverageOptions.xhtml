@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Step 3: Build Your Quote</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+<h:body>
+    <div class="container">
+    <h2>Step 3: Build Your Custom Quote</h2>
+    <h:form>
+        <h:panelGrid columns="2" styleClass="main-layout-grid">
+
+            <h:panelGroup>
+                <h3>Available Coverages</h3>
+                <h:dataTable value="#{quoteBuilderBean.availableCoverages}" var="option" styleClass="coverage-table" rendered="#{not empty quoteBuilderBean.availableCoverages}">
+                    <h:column><div class="coverage-name">#{option.coverageName}</div><div class="coverage-desc">#{option.coverageDescription}</div></h:column>
+                    <h:column><h:outputText value="#{option.limit}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText></h:column>
+                    <h:column><h:outputText value="#{option.premium}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText></h:column>
+                    <h:column><h:commandButton value="Add" action="#{quoteBuilderBean.addCoverage(option)}" styleClass="btn-add" /></h:column>
+                </h:dataTable>
+            </h:panelGroup>
+
+            <h:panelGroup styleClass="quote-summary-panel">
+                <h3>Your Quote</h3>
+                <h:dataTable value="#{quoteBuilderBean.selectedCoverages}" var="item" styleClass="quote-table" rendered="#{not empty quoteBuilderBean.selectedCoverages}">
+                    <h:column>#{item.coverageName}</h:column>
+                    <h:column><h:outputText value="#{item.premium}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText></h:column>
+                    <h:column><h:commandButton value="Remove" action="#{quoteBuilderBean.removeCoverage(item)}" styleClass="btn-remove" /></h:column>
+                </h:dataTable>
+                <div class="total-premium">
+                    Total Premium: <h:outputText value="#{quoteBuilderBean.totalPremium}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+        <h3>Special Discounts</h3>
+
+        <h:panelGrid columns="2" styleClass="form-grid">
+            <h:outputLabel for="privilege" value="Do you qualify for a privilege discount?"/>
+            <h:selectOneMenu id="privilege" value="#{quoteBuilderBean.hasPrivilege}">
+                <f:selectItem itemValue="true" itemLabel="Yes"/>
+                <f:selectItem itemValue="false" itemLabel="No"/>
+                <f:ajax event="change" render="privilegeDetailsPanel"/>
+            </h:selectOneMenu>
+        </h:panelGrid>
+        <h:panelGroup id="privilegeDetailsPanel">
+            <h:panelGrid columns="2" rendered="#{quoteBuilderBean.hasPrivilege}">
+                <h:outputLabel for="details" value="Please describe your privilege:" />
+                <h:inputTextarea id="details" value="#{quoteBuilderBean.privilegeDetails}"
+                                 rows="4" cols="40"/>
+            </h:panelGrid>
+        </h:panelGroup>
+        <br/>
+        <h:commandButton value="Confirm and View Summary" action="#{quoteBuilderBean.confirmQuote}" styleClass="btn-primary" rendered="#{not empty quoteBuilderBean.selectedCoverages}" />
+    </h:form>
+    </div>
+</h:body>
+</html>

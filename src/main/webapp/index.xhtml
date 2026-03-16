@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<h:head>
+    <title>Star Quote Page</title>
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+
+    <h:body>
+        <div class="container home-container">
+        <h:graphicImage name="img/logo.png" alt="Company Logo" width="250" height="250"/>
+            <h1>Get a car insurance</h1>
+            <h:form>
+                <p>Click the button to start the quoting process</p>
+                <h:commandButton value="Start my quote" action="personDetails?faces-redirect=true"
+                styleClass="btn-primary"></h:commandButton>
+            </h:form>
+        </div>
+    </h:body>
+</html>

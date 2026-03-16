@@ -1,0 +1,206 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #e9ecef; /* Light gray background for the whole page */
+    color: #495057;
+    margin: 0;
+    padding: 2rem;
+}
+
+h1, h2, h3 {
+    color: #343a40;
+    font-weight: 500;
+}
+
+p {
+    line-height: 1.6;
+}
+
+a, .ui-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover, .ui-link:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #dee2e6;
+    margin: 2rem 0;
+}
+
+/* --- MAIN LAYOUT CONTAINER --- */
+/* IMPORTANT: Wrap the content of each page in <div class="container"> for this to work */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* --- FORM & INPUT STYLES --- */
+.form-grid > tbody > tr > td { /* Target panelGrid cells */
+    padding: 0.5rem;
+    vertical-align: middle;
+}
+.form-grid > tbody > tr > td:first-child { /* Style the labels */
+    font-weight: 500;
+    text-align: right;
+    width: 30%;
+}
+
+.ui-inputfield, .ui-inputtextarea, .ui-selectonemenu .ui-selectonemenu-label {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Important for consistent sizing */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ui-inputfield:focus, .ui-inputtextarea:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    padding-left: 0.5rem;
+}
+
+/* Checkbox and Radio Button Styling */
+.ui-selectmanycheckbox-layout-pageDirection td,
+.ui-selectoneradio td {
+    padding-bottom: 0.5rem;
+}
+.ui-selectmanycheckbox-layout-pageDirection label,
+.ui-selectoneradio label {
+    margin-left: 0.5rem;
+}
+
+/* --- BUTTONS --- */
+.ui-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-add {
+    background-color: #28a745;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}
+.btn-add:hover {
+    background-color: #1e7e34;
+}
+
+.btn-remove {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}
+.btn-remove:hover {
+    background-color: #b21f2d;
+}
+
+/* --- DATA TABLE STYLES --- */
+.coverage-table, .quote-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+.coverage-table th, .quote-table th {
+    background-color: #f8f9fa;
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.coverage-table td, .quote-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+.coverage-table tr:nth-child(even) td, .quote-table tr:nth-child(even) td {
+    background-color: #f8f9fa;
+}
+
+.coverage-name { font-weight: bold; }
+.coverage-desc { font-size: 0.9em; color: #6c757d; }
+
+/* --- SPECIFIC LAYOUT PANELS --- */
+/* Two-column layout for coverage selection */
+.main-layout-grid > tbody > tr > td {
+    width: 50%;
+    vertical-align: top;
+    padding: 0 1rem;
+}
+
+/* Shopping cart / quote summary panel on the right */
+.quote-summary-panel {
+    border: 1px solid #dee2e6;
+    padding: 1.5rem;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    position: sticky; /* Makes it "stick" as you scroll the left side */
+    top: 2rem;
+}
+
+.total-premium {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #28a745;
+    text-align: right;
+    margin-top: 1rem;
+}
+
+/* --- HOME & SUMMARY PAGE --- */
+.home-container { /* Special centered container for the homepage */
+    text-align: center;
+}
+.home-container .ui-graphic-image {
+    margin-bottom: 1rem;
+}
+
+.summary-label { font-weight: bold; }
+.summary-action { text-align: right; }
+.checkbox-container {
+    display: block; /* Ensures it takes its own space */
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.checkbox-container > label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+
+.checkbox-group {
+    border: none;
+    border-spacing: 0;
+}
