@@ -1,21 +1,38 @@
 package model;
 
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 
 public class Person {
+    @NotBlank
+    @Size(min = 2, max = 25, message = "The firstname has to be min 2, max 25 letters")
     private String firstName;
+    @NotBlank
+    @Size(min = 2, max = 25, message = "The lastname has to be min 2, max 25 letters")
     private String lastName;
+    @Past(message = "Date of birth must be in the past")
     private LocalDate dateOfBirth;
-    private String phone;
+    @NotBlank(message = "Phone number must not be blank")
+    @Size(min = 10, max = 20, message = "Phone number must be between 10 and 20 characters")
+    @Pattern(
+            regexp = "^\\+?[0-9 ]+$",
+            message = "Phone number can start with + and contain digits and spaces only"
+    )
+    private String phoneNumber;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Enter a valid email address")
+    private String email;
 
     public Person() {
     }
 
-    public Person(String firstName, String lastName, LocalDate dateOfBirth, String phone) {
+    public Person(String firstName, String lastName, LocalDate dateOfBirth, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber.trim();
     }
 
 
@@ -46,12 +63,20 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber.trim();
     }
 
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

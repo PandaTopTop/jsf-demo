@@ -13,6 +13,10 @@ public class CustomerBean implements Serializable {
         return "carDetails?faces-redirect=true";
     }
 
+    public void resetPersonData(){
+        person = new Person();
+    }
+
     public Person getPerson() { return person; }
     public void setPerson(Person person) { this.person = person; }
 }
