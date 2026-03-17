@@ -16,7 +16,7 @@
             <h3>Your Quote</h3>
             <h:dataTable value="#{quoteBuilderBean.selectedCoverages}" var="item" styleClass="quote-table" rendered="#{not empty quoteBuilderBean.selectedCoverages}">
                 <h:column>#{item.coverageName}</h:column>
-                <h:column><h:outputText value="#{item.premium}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText></h:column>
+                <h:column><f:facet>Premium</f:facet><h:outputText value="#{item.premium}"><f:convertNumber type="currency" currencySymbol="$" /></h:outputText></h:column>
                 <h:column><h:commandButton value="Remove" action="#{quoteBuilderBean.removeCoverage(item)}" styleClass="btn-remove" /></h:column>
             </h:dataTable>
             <div class="total-premium">
