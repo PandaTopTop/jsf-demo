@@ -8,17 +8,18 @@ public class Person {
     @NotBlank
     @Size(min = 2, max = 25, message = "The firstname has to be min 2, max 25 letters")
     private String firstName;
+
     @NotBlank
     @Size(min = 2, max = 25, message = "The lastname has to be min 2, max 25 letters")
     private String lastName;
+
     @Past(message = "Date of birth must be in the past")
     private LocalDate dateOfBirth;
+
     @NotBlank(message = "Phone number must not be blank")
-    @Size(min = 10, max = 20, message = "Phone number must be between 10 and 20 characters")
-    @Pattern(
-            regexp = "^\\+?[0-9 ]+$",
-            message = "Phone number can start with + and contain digits and spaces only"
-    )
+
+    @Size(min = 10, max = 10, message = "Phone number must contain exactly 10 digits")
+    @Pattern(regexp = "^[0-9]+$", message = "Phone number must contain only digits")
     private String phoneNumber;
 
     @NotBlank(message = "Email is required")
