@@ -32,7 +32,8 @@
         <h:message for="email" styleClass="error-message" />
 
 <h:outputLabel for="phoneNumber" value="Phone" />
-    <p:inputMask id="phoneNumber" required="true" label="Phone" value="#{customerBean.person.phoneNumber}" mask="999 999 9999"/>
+    <p:inputMask id="phoneNumber" required="true" label="Phone" value="#{customerBean.person.phoneNumber}"
+                 mask="(999) 999-9999" unmask="true"/>
         <h:message for="phoneNumber" styleClass="error-message" />
 
         <h:panelGroup/>

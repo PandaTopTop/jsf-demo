@@ -17,9 +17,8 @@ public class Person {
     private LocalDate dateOfBirth;
 
     @NotBlank(message = "Phone number must not be blank")
-
-    @Size(min = 10, max = 10, message = "Phone number must contain exactly 10 digits")
-    @Pattern(regexp = "^[0-9]+$", message = "Phone number must contain only digits")
+    @Size(min = 14, max = 14, message = "Phone number must be in the format (000) 000-0000")
+    @Pattern(regexp = "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$", message = "Format must be (000) 000-0000")
     private String phoneNumber;
 
     @NotBlank(message = "Email is required")
@@ -69,7 +68,13 @@ public class Person {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber.trim();
+        if (phoneNumber != null) {
+            String digitsOnly = phoneNumber.replaceAll("[^0-9]", "");
+            this.phoneNumber = digitsOnly;
+            System.out.println("Cleaned value being stored: '" + this.phoneNumber + "'");
+        } else {
+            this.phoneNumber = null;
+        }
     }
 
 
