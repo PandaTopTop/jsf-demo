@@ -8,39 +8,43 @@
     <title>Title</title>
     <h:outputStylesheet name="css/style.css" />
 </h:head>
-<body>
+<h:body>
 <h2>Step 1: Tell Us About Yourself</h2>
 <h:form>
-    <h:panelGrid columns="3" styleClass="form-grid" role="presentation">
+    <h:panelGrid columns="3" >
         <!-- h:outputLabel, h:inputText, and h:message working together -->
         <h:outputLabel for="firstName" value="First Name:" />
-        <h:inputText id="firstName" value="#{customerBean.person.firstName}" required="true" label="First Name"/>
-        <h:message for="firstName" styleClass="error-message"/>
+            <h:inputText id="firstName" value="#{customerBean.person.firstName}" required="true" label="First Name"/>
+            <h:message for="firstName" styleClass="error-message"/>
 
         <h:outputLabel for="lastName" value="Last Name:" />
-        <h:inputText id="lastName" value="#{customerBean.person.lastName}" required="true" label="Last Name"/>
-        <h:message for="lastName" styleClass="error-message" />
+            <h:inputText id="lastName" value="#{customerBean.person.lastName}" required="true" label="Last Name"/>
+            <h:message for="lastName" styleClass="error-message" />
+
 
         <h:outputLabel for="dob" value="Date of Birth (YYYY-MM-DD):" />
-        <h:inputText id="dob" value="#{customerBean.person.dateOfBirth}" required="true" label="Date of Birth" converter="localDateConverter">
-            <f:validator validatorId="ageValidator"/>
-        </h:inputText>
-        <h:message for="dob" styleClass="error-message" />
+            <h:inputText id="dob" value="#{customerBean.person.dateOfBirth}" required="true" label="Date of Birth" converter="localDateConverter">
+                <f:validator validatorId="ageValidator"/>
+            </h:inputText>
+            <h:message for="dob" styleClass="error-message" />
+
 
         <h:outputLabel for="email" value="Email: " />
-        <h:inputText id="email" value="#{customerBean.person.email}" required="true" label="Email" validator="emailValidator"/>
-        <h:message for="email" styleClass="error-message" />
 
-<h:outputLabel for="phoneNumber" value="Phone" />
-    <p:inputMask id="phoneNumber" required="true" label="Phone" value="#{customerBean.person.phoneNumber}"
-                 mask="(999) 999-9999" unmask="true"/>
-        <h:message for="phoneNumber" styleClass="error-message" />
+            <h:inputText id="email" value="#{customerBean.person.email}" required="true" label="Email" validator="emailValidator"/>
+            <h:message for="email" styleClass="error-message" />
 
-        <h:panelGroup/>
+
+        <h:outputLabel for="phoneNumber" value="Phone" />
+
+            <p:inputMask id="phoneNumber" required="true" label="Phone" value="#{customerBean.person.phoneNumber}"
+                         mask="(999) 999-9999" unmask="true"/>
+            <h:message for="phoneNumber" styleClass="error-message" />
+
     </h:panelGrid>
     <br/>
     <h:commandButton value="Reset data"  action="#{customerBean.resetPersonData}" styleClass="btn-remove"/>
     <h:commandButton value="Save"  styleClass="btn-primary"/>
 </h:form>
-</body>
+</h:body>
 </html>

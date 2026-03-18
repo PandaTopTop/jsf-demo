@@ -45,6 +45,7 @@ hr {
 .form-grid > tbody > tr > td { /* Target panelGrid cells */
     padding: 0.5rem;
     vertical-align: middle;
+    display: table-cell;
 }
 .form-grid > tbody > tr > td:first-child { /* Style the labels */
     font-weight: 500;
@@ -194,4 +195,46 @@ hr {
 .checkbox-group {
     border: none;
     border-spacing: 0;
+}
+
+/* --- Main Grid Styling --- */
+.form-grid {
+    width: 100%; /* Make the form take up the available width */
+    border-collapse: collapse; /* Removes double borders between table cells */
+    margin-top: 20px;
+
+}
+
+/* --- Label Column Styling --- */
+.label-col {
+    width: 220px; /* Give the label column a fixed, consistent width */
+    padding-right: 15px; /* Add space between the label and the input */
+    text-align: left; /* Align labels to the right for a clean look */
+    vertical-align: top; /* Align the label to the TOP of its cell */
+    padding-top: 5px; /* Nudge the label text down to align with the input box text */
+    font-weight: bold;
+}
+
+/* --- Input Column Styling --- */
+.input-col {
+    vertical-align: top; /* CRUCIAL: Align the input group to the TOP of its cell */
+    text-align: left; /* Align content to the left */
+}
+
+/* --- General Input Styling --- */
+/* Target both PrimeFaces and standard JSF inputs */
+.input-col input[type="text"],
+.input-col .ui-inputfield {
+    width: 250px; /* Give all input boxes a consistent width */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* --- Error Message Styling --- */
+.error-message {
+    color: #D8000C; /* A standard error red color */
+    font-size: 0.9em;
+    font-style: italic;
+    margin-left: 10px; /* CRUCIAL: Adds space between the input and the message */
 }
