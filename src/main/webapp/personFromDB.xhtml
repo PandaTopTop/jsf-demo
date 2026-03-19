@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Customer Details</title>
+    <h:outputStylesheet name="css/style.css"/>
+</h:head>
+
+<h:body>
+
+    <f:metadata>
+        <f:viewParam name="id" value="#{customerDbBean.id}" required="true"
+                     requiredMessage="Customer ID is missing from the URL.">
+            <f:validateRegex pattern="[0-9]+"/>
+        </f:viewParam>
+
+        <f:viewAction action="#{customerDbBean.loadPerson()}" onPostback="false"/>
+    </f:metadata>
+
+    <div class="container">
+
+        <h1>Customer Details</h1>
+
+        <!-- This will display any validation or required messages -->
+        <h:messages globalOnly="false" style="color: red;"/>
+
+        <!--
+            3. Display this panel ONLY if the person was found (is not empty/null).
+               It accesses the 'person' property we populated in loadPerson().
+        -->
+        <h:panelGroup rendered="#{not empty customerDbBean.person}">
+            <h:panelGrid columns="2">
+                <h:outputText value="ID:"/>
+                <h:outputText value="#{customerDbBean.person.id}"/>
+
+                <h:outputText value="First Name:"/>
+                <h:outputText value="#{customerDbBean.person.firstName}"/>
+
+                <h:outputText value="Last Name:"/>
+                <h:outputText value="#{customerDbBean.person.lastName}"/>
+
+                <h:outputText value="Date of Birth"/>
+                <h:outputText value="#{customerDbBean.person.dateOfBirth}"/>
+
+                <h:outputText value="Email:"/>
+                <h:outputText value="#{customerDbBean.person.email}"/>
+
+                <h:outputText value="Phone Number: "/>
+                <h:outputText value="#{customerDbBean.person.phoneNumber}"/>
+            </h:panelGrid>
+        </h:panelGroup>
+
+        <!--
+            4. Display this message ONLY if the person was NOT found (is empty/null)
+               after the load attempt.
+        -->
+        <h:panelGroup rendered="#{empty customerDbBean.person}">
+            <p>Sorry, the customer could not be found.</p>
+        </h:panelGroup>
+    </div>
+</h:body>
+</html>
+
+

@@ -1,10 +1,20 @@
 package model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name= "Persons")
 public class Person {
+
+    @Id
+    @Column(name = "personId")
+    private Integer id;
     @NotBlank
     @Size(min = 2, max = 25, message = "The firstname has to be min 2, max 25 letters")
     private String firstName;
@@ -84,5 +94,13 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
