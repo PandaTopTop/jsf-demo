@@ -1,9 +1,6 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
@@ -14,6 +11,7 @@ public class Person {
 
     @Id
     @Column(name = "personId")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     @NotBlank
     @Size(min = 2, max = 25, message = "The firstname has to be min 2, max 25 letters")

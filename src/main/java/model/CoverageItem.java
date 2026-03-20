@@ -1,13 +1,44 @@
 package model;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.math.BigDecimal;
 
+
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "findAll",query = "SELECT ci FROM CoverageItem ci"),
+        @NamedQuery(name = "CoverageItem.findAllWithFilter",
+                query = "SELECT ci FROM CoverageItem ci WHERE " +
+                        "(:id IS NULL OR ci.coverageId = :id) AND " +
+                        "(:name IS NULL OR LOWER(ci.coverageName) LIKE LOWER(:name)) AND " +
+                        "(:minLimit IS NULL OR ci.limit >= :minLimit) AND " +
+                        "(:maxLimit IS NULL OR ci.limit <= :maxLimit) AND " +
+                        "(:minPremium IS NULL OR ci.premium >= :minPremium) AND " +
+                        "(:maxPremium IS NULL OR ci.premium <= :maxPremium) AND " +
+                        "(:active IS NULL OR ci.active = :active)")}
+)
+@Table(name = "CoverageItems")
 public class CoverageItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer coverageId;
+    @NotBlank
+    @Size(min = 2,max = 50)
     private String coverageName;
+    @NotBlank
+    @Size(min = 5,max = 50)
     private String coverageDescription;
+    @Column(name = "coverage_limit")
+    @NotNull
     private BigDecimal limit;
+    @NotNull
     private BigDecimal premium;
-    private boolean active;
+    private Boolean active = true;
 
     public CoverageItem() {
     }
@@ -52,11 +83,20 @@ public class CoverageItem {
         this.premium = premium;
     }
 
-    public boolean isActive() {
+
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean  active) {
         this.active = active;
+    }
+
+    public Integer getCoverageId() {
+        return coverageId;
+    }
+
+    public void setCoverageId(Integer coverageId) {
+        this.coverageId = coverageId;
     }
 }
